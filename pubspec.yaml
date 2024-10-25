@@ -3,7 +3,8 @@ description: "A new Flutter project."
 
 publish_to: 'none'
 
-version: 1.0.0+1
+# 홈 페이지 퍼블리싱 + 알림 페이지 퍼블리싱
+version: 1.1.0+2
 
 environment:
   sdk: ^3.5.3

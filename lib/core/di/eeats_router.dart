@@ -1,4 +1,4 @@
-import 'package:eeats/presentation/alarm/view/notice_screen.dart';
+import 'package:eeats/presentation/alarm/view/alarm_screen.dart';
 import 'package:eeats/presentation/root/view/root_screen.dart';
 import 'package:eeats/presentation/sign_in/view/sign_in_screen.dart';
 import 'package:eeats/presentation/splash/view/splash_screen.dart';

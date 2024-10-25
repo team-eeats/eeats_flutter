@@ -1,0 +1,4 @@
+enum AppBarType {
+  notice,
+  pop,
+}

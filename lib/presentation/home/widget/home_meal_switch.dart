@@ -11,7 +11,7 @@ class HomeMealSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double width = 109, height = 30;
+    const double height = 30;
     return BlocBuilder<HomeMealControllerCubit, MealType>(builder: (context, state) {
       return Stack(
         children: [

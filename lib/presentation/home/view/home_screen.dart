@@ -1,4 +1,3 @@
-import 'package:eeats/core/component/eeats_app_bar.dart';
 import 'package:eeats/core/constants/eeats_style.dart';
 import 'package:eeats/core/layout/eeats_layout.dart';
 import 'package:eeats/core/state/meal_type.dart';

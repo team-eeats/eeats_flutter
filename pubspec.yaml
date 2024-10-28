@@ -33,6 +33,8 @@ flutter:
     - assets/icon/navigator/
     - assets/icon/meal/
     - assets/icon/alarm/
+    - assets/icon/suggest/
+    - assets/icon/my/
     - assets/images/core/
 
   fonts:

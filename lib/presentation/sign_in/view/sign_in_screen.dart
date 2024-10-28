@@ -1,4 +1,4 @@
-import 'package:eeats/core/component/eeats_gesture.dart';
+import 'package:eeats/core/component/eeats_button.dart';
 import 'package:eeats/core/component/eeats_text_field.dart';
 import 'package:eeats/core/constants/eeats_style.dart';
 import 'package:eeats/core/layout/eeats_layout.dart';
@@ -46,24 +46,13 @@ class _SignInScreenState extends State<SignInScreen> {
       floatingActionButton: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(bottom: 24),
-          child: EeatsGesture(
+          child: EeatsButton(
             event: () => context.go("/root"),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 43,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: EeatsColor.main500,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Text(
-                  "로그인하기",
-                  style: EeatsTextStyle.button2(
-                    color: EeatsColor.white,
-                  ),
-                ),
+            backgroundColor: EeatsColor.main300,
+            content: Text(
+              "로그인하기",
+              style: EeatsTextStyle.button2(
+                color: EeatsColor.white,
               ),
             ),
           ),

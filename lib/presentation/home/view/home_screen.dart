@@ -19,7 +19,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return EeatsLayout(
-      appBar: const EeatsAppBar(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

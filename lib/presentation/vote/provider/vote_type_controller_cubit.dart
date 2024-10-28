@@ -1,17 +1,17 @@
-import 'package:eeats/core/state/navigator_type.dart';
+import 'package:eeats/core/state/vote_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class RootNavigatorCubit extends Cubit<NavigatorType> {
-  RootNavigatorCubit() : super(NavigatorType.home) {
+class VoteTypeControllerCubit extends Cubit<VoteType> {
+  VoteTypeControllerCubit() : super(VoteType.open) {
     controller.addListener(_onPageChanged);
   }
 
   final PageController controller = PageController(initialPage: 0);
 
-  void changeType({required NavigatorType type}) {
+  void changeType({required VoteType type}) {
     controller.animateToPage(
-      type.index,
+      type.page,
       duration: const Duration(milliseconds: 500),
       curve: Curves.linearToEaseOut,
     ).then((_) {
@@ -21,6 +21,6 @@ class RootNavigatorCubit extends Cubit<NavigatorType> {
 
   void _onPageChanged() {
     final index = controller.page!.round();
-    emit(NavigatorType.values.elementAt(index));
+    emit(VoteType.values.elementAt(index));
   }
 }

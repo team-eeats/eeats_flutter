@@ -1,5 +1,5 @@
 import 'package:eeats/core/component/eeats_gesture.dart';
-import 'package:eeats/core/constants/eeats_style.dart';
+import 'package:eeats/core/di/eeats_style.dart';
 import 'package:eeats/presentation/my/widget/suggest/my_suggest_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

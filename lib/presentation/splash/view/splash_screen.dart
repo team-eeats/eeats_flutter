@@ -1,6 +1,5 @@
-import 'package:eeats/core/constants/eeats_asset.dart';
+import 'package:eeats/core/di/eeats_asset.dart';
 import 'package:eeats/core/layout/eeats_layout.dart';
-import 'package:eeats/presentation/home/provider/home_meal_controller_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -19,9 +18,6 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(milliseconds: 1500)).then(
       (value) => context.go("/signIn"),
     );
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<HomeMealControllerCubit>().init();
-    });
   }
 
   @override

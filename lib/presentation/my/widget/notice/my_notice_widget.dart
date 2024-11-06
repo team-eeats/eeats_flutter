@@ -1,4 +1,4 @@
-import 'package:eeats/core/constants/eeats_style.dart';
+import 'package:eeats/core/di/eeats_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

@@ -1,6 +1,6 @@
 import 'package:eeats/core/component/eeats_app_bar.dart';
 import 'package:eeats/core/component/eeats_outlined_button.dart';
-import 'package:eeats/core/constants/eeats_style.dart';
+import 'package:eeats/core/di/eeats_style.dart';
 import 'package:eeats/core/dummy/allergy_list.dart';
 import 'package:eeats/core/layout/eeats_layout.dart';
 import 'package:eeats/core/state/app_bar_type.dart';

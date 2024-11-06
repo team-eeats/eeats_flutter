@@ -1,4 +1,4 @@
-import 'package:eeats/core/constants/eeats_style.dart';
+import 'package:eeats/core/di/eeats_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -129,7 +129,7 @@ class _EeatsTextFieldState extends State<EeatsTextField> {
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             child: SvgPicture.asset(
                               /// 중복 코드 최소화
-                              "$iconCoreAsset/eyes${!_isClicked ? "_off" : ""}_icon.svg",
+                              "$iconCoreAsset/eyes_${!_isClicked ? "close" : "open"}_icon.svg",
                             ),
                           ),
                         )
@@ -171,6 +171,7 @@ class _EeatsTextFieldState extends State<EeatsTextField> {
                 onChanged: (value) {
                   setState(() {});
                 },
+
               ),
               if (widget.maxLength != null)
               Positioned(

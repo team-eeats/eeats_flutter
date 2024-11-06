@@ -1,4 +1,4 @@
-import 'package:eeats/core/constants/eeats_style.dart';
+import 'package:eeats/core/di/eeats_asset.dart';
 
 enum NavigatorType {
   home(

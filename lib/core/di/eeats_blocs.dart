@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future<List<BlocProvider>> blocs() async {
   return [
-    BlocProvider<RootNavigatorCubit>(create: (context) => RootNavigatorCubit()),
     BlocProvider<VoteTypeControllerCubit>(create: (context) => VoteTypeControllerCubit()),
   ];
 }

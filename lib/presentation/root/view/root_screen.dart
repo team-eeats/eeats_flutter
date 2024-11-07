@@ -4,12 +4,10 @@ import 'package:eeats/core/layout/eeats_layout.dart';
 import 'package:eeats/core/state/navigator_type.dart';
 import 'package:eeats/presentation/home/view/home_screen.dart';
 import 'package:eeats/presentation/my/view/my_screen.dart';
-import 'package:eeats/presentation/root/provider/root_navigator_cubit.dart';
 import 'package:eeats/presentation/root/widget/root_navigator_item.dart';
 import 'package:eeats/presentation/suggest/view/suggest_screen.dart';
 import 'package:eeats/presentation/vote/view/vote_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -18,13 +16,36 @@ class RootScreen extends StatefulWidget {
   State<RootScreen> createState() => _RootScreenState();
 }
 
-class _RootScreenState extends State<RootScreen> {
+class _RootScreenState extends State<RootScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TabController(length: NavigatorType.values.length, vsync: this);
+    _controller.animation!.addListener(() {
+      int index = _controller.index + _controller.offset.round();
+
+      setState(() {
+        _controller.index = index;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   final List<Widget> pages = [
     const HomeScreen(),
     const SuggestScreen(),
     const VoteScreen(),
     const MyScreen(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return EeatsLayout(
@@ -42,28 +63,35 @@ class _RootScreenState extends State<RootScreen> {
               ),
             ),
           ),
-          child: const FittedBox(
+          child: FittedBox(
             child: Row(
               children: [
-                RootNavigatorItem(type: NavigatorType.home),
-                RootNavigatorItem(type: NavigatorType.suggest),
-                RootNavigatorItem(type: NavigatorType.vote),
-                RootNavigatorItem(type: NavigatorType.my),
+                RootNavigatorItem(
+                  type: NavigatorType.home,
+                  controller: _controller,
+                ),
+                RootNavigatorItem(
+                  type: NavigatorType.suggest,
+                  controller: _controller,
+                ),
+                RootNavigatorItem(
+                  type: NavigatorType.vote,
+                  controller: _controller,
+                ),
+                RootNavigatorItem(
+                  type: NavigatorType.my,
+                  controller: _controller,
+                ),
               ],
             ),
           ),
         ),
       ),
-      child: BlocBuilder<RootNavigatorCubit, NavigatorType>(
-        builder: (context, state) {
-          return PageView.builder(
-            controller: context.watch<RootNavigatorCubit>().controller,
-            itemCount: NavigatorType.values.length,
-            itemBuilder: (context, index) {
-              return pages[index];
-            },
-          );
-        },
+      child: TabBarView(
+        controller: _controller,
+        children: NavigatorType.values
+            .map((type) => pages.elementAt(type.index))
+            .toList(),
       ),
     );
   }

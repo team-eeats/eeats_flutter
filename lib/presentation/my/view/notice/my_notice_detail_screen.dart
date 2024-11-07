@@ -1,7 +1,7 @@
 import 'package:eeats/core/component/eeats_app_bar.dart';
 import 'package:eeats/core/di/eeats_style.dart';
 import 'package:eeats/core/layout/eeats_layout.dart';
-import 'package:eeats/core/state/app_bar_type.dart';
+import 'package:eeats/core/type/app_bar_type.dart';
 import 'package:flutter/material.dart';
 
 class MyNoticeDetailScreen extends StatelessWidget {

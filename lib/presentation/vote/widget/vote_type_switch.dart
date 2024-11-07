@@ -1,7 +1,7 @@
 import 'package:eeats/core/component/eeats_gesture.dart';
 import 'package:eeats/core/component/eeats_switch_button.dart';
 import 'package:eeats/core/di/eeats_style.dart';
-import 'package:eeats/core/state/vote_type.dart';
+import 'package:eeats/core/type/vote_type.dart';
 import 'package:eeats/presentation/vote/provider/vote_type_controller_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,7 +1,7 @@
 import 'package:eeats/core/component/eeats_app_bar.dart';
 import 'package:eeats/core/di/eeats_style.dart';
 import 'package:eeats/core/layout/eeats_layout.dart';
-import 'package:eeats/core/state/navigator_type.dart';
+import 'package:eeats/core/type/navigator_type.dart';
 import 'package:eeats/presentation/home/view/home_screen.dart';
 import 'package:eeats/presentation/my/view/my_screen.dart';
 import 'package:eeats/presentation/root/widget/root_navigator_item.dart';

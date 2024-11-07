@@ -1,10 +1,9 @@
 import 'package:eeats/core/di/eeats_style.dart';
 import 'package:eeats/core/layout/eeats_layout.dart';
-import 'package:eeats/core/state/meal_type.dart';
+import 'package:eeats/core/type/meal_type.dart';
 import 'package:eeats/presentation/home/widget/home_meal_switch.dart';
 import 'package:eeats/presentation/home/widget/home_meal_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

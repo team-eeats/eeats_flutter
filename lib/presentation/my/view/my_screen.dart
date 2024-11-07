@@ -1,5 +1,5 @@
 import 'package:eeats/core/layout/eeats_layout.dart';
-import 'package:eeats/core/state/help_guide_type.dart';
+import 'package:eeats/core/type/help_guide_type.dart';
 import 'package:eeats/presentation/my/widget/logout/my_logout_dialog.dart';
 import 'package:eeats/presentation/my/widget/my_option_content_widget.dart';
 import 'package:eeats/presentation/my/widget/my_option_title_widget.dart';

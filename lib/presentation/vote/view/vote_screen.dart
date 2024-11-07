@@ -1,5 +1,5 @@
 import 'package:eeats/core/layout/eeats_layout.dart';
-import 'package:eeats/core/state/vote_type.dart';
+import 'package:eeats/core/type/vote_type.dart';
 import 'package:eeats/presentation/vote/provider/vote_type_controller_cubit.dart';
 import 'package:eeats/presentation/vote/widget/vote_type_switch.dart';
 import 'package:flutter/material.dart';

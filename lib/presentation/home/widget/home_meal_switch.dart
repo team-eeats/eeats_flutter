@@ -1,7 +1,7 @@
 import 'package:eeats/core/component/eeats_gesture.dart';
 import 'package:eeats/core/component/eeats_switch_button.dart';
 import 'package:eeats/core/di/eeats_style.dart';
-import 'package:eeats/core/state/meal_type.dart';
+import 'package:eeats/core/type/meal_type.dart';
 import 'package:flutter/material.dart';
 
 class HomeMealSwitch extends StatelessWidget {

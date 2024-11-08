@@ -1,9 +1,11 @@
 import 'package:eeats/core/di/eeats_style.dart';
+import 'package:eeats/core/provider/text_field_focus_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class EeatsTextField extends StatefulWidget {
+class EeatsTextField<T> extends StatefulWidget {
   final TextEditingController controller;
   final FocusNode focusNode;
 
@@ -12,7 +14,7 @@ class EeatsTextField extends StatefulWidget {
   final String title;
   final String? hintText;
 
-  final bool? password, autofocus;
+  final bool? password, autofocus, error;
 
   final int? maxLength, maxLines;
 
@@ -27,6 +29,7 @@ class EeatsTextField extends StatefulWidget {
     required this.controller,
     required this.focusNode,
     required this.title,
+    this.error,
     this.height,
     this.width,
     this.password = false,
@@ -148,8 +151,12 @@ class _EeatsTextFieldState extends State<EeatsTextField> {
                   /// 텍스트 필드가 포커스 되지 않았을 때
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: const BorderSide(
-                      color: EeatsColor.gray0,
+                    borderSide: BorderSide(
+                      color: widget.error != null
+                          ? widget.error!
+                              ? EeatsColor.main500
+                              : EeatsColor.gray0
+                          : EeatsColor.gray0,
                       width: 1,
                       strokeAlign: BorderSide.strokeAlignInside,
                     ),
@@ -158,44 +165,48 @@ class _EeatsTextFieldState extends State<EeatsTextField> {
 
                 onTap: () {
                   /// 텍스트 필드가 포커스 된 상태에서 텍스트 필드를 클릭하면 포커스 해제
-                  FocusScope.of(context).hasFocus
-                      ? FocusScope.of(context).unfocus()
-                      : FocusScope.of(context).hasFocus;
+                  if (FocusScope.of(context).hasFocus) {
+                    context.read<TextFieldFocusCubit>().changeUnFocus();
+                    FocusScope.of(context).unfocus();
+                  } else {
+                    context.read<TextFieldFocusCubit>().changeFocus();
+                    FocusScope.of(context).hasFocus;
+                  }
                 },
 
                 /// 바깥 영역을 클릭 시 포커스 해제
                 onTapOutside: (event) {
+                  context.read<TextFieldFocusCubit>().changeUnFocus();
                   FocusScope.of(context).unfocus();
                 },
 
                 onChanged: (value) {
                   setState(() {});
                 },
-
               ),
               if (widget.maxLength != null)
-              Positioned(
-                bottom: 12,
-                right: 12,
-                child: RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: widget.controller.text.length.toString(),
-                        style: EeatsTextStyle.caption3(
-                          color: EeatsColor.main300,
+                Positioned(
+                  bottom: 12,
+                  right: 12,
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: widget.controller.text.length.toString(),
+                          style: EeatsTextStyle.caption3(
+                            color: EeatsColor.main300,
+                          ),
                         ),
-                      ),
-                      TextSpan(
-                        text: "/${widget.maxLength}",
-                        style: EeatsTextStyle.caption3(
-                          color: EeatsColor.gray300,
+                        TextSpan(
+                          text: "/${widget.maxLength}",
+                          style: EeatsTextStyle.caption3(
+                            color: EeatsColor.gray300,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
             ],
           ),
         ),

@@ -19,6 +19,15 @@ class SuggestScreen extends StatefulWidget {
 
 class _SuggestScreenState extends State<SuggestScreen> {
   @override
+  void initState() {
+    super.initState();
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   context.read<SuggestBloc>().add(GetSuggestListEvent());
+    // });
+    /// 과도한 api 요청 방지
+  }
+
+  @override
   Widget build(BuildContext context) {
     final suggestLength =
         context.watch<SuggestBloc>().state.value.suggestions!.length;

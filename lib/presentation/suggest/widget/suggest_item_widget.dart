@@ -38,7 +38,7 @@ class SuggestItemWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      suggestItem.title,
+                      suggestItem.accountId,
                       style: EeatsTextStyle.body3(
                         color: EeatsColor.main200,
                       ),

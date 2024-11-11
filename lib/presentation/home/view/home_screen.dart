@@ -4,6 +4,7 @@ import 'package:eeats/core/type/meal_type.dart';
 import 'package:eeats/presentation/home/widget/home_meal_switch.dart';
 import 'package:eeats/presentation/home/widget/home_meal_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -48,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen>
               children: [
                 const SizedBox(height: 20),
                 Text(
-                  "8월 27일 화요일",
+                  DateFormat('M월 d일 EEEE', 'ko_KR').format(DateTime.now()),
                   style: EeatsTextStyle.subTitle1(
                     color: EeatsColor.black,
                   ),

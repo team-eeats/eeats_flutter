@@ -1,9 +1,15 @@
 import 'package:eeats/core/di/eeats_style.dart';
+import 'package:eeats/domain/entity/notice/notice_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MyNoticeWidget extends StatelessWidget {
-  const MyNoticeWidget({super.key});
+  final NoticeEntity item;
+
+  const MyNoticeWidget({
+    super.key,
+    required this.item,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +26,7 @@ class MyNoticeWidget extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "오늘 급식 변경",
+                    item.title,
                     style: EeatsTextStyle.label2(
                       color: EeatsColor.black,
                     ),
@@ -31,7 +37,7 @@ class MyNoticeWidget extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                "1일 전",
+                formatDate(item.createdAt),
                 style: EeatsTextStyle.label3(
                   color: EeatsColor.gray600,
                 ),
@@ -41,5 +47,16 @@ class MyNoticeWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+  String formatDate(String date) {
+    DateTime now = DateTime.now();
+
+    Duration difference = now.difference(DateTime.parse(date));
+
+    if (difference.inDays == 0) {
+      return "오늘";
+    } else {
+      return "${difference.inDays}일 전"; // n일 전인 경우
+    }
   }
 }

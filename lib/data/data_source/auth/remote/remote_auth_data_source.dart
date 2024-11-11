@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:eeats/core/network/dio/dio.dart';
 import 'package:eeats/data/dto/response/auth/token_response.dart';
 import 'package:eeats/domain/entity/auth/token_entity.dart';
-import 'package:flutter/material.dart';
 
 class RemoteAuthDataSource {
   static const String endpoint = "/auth";

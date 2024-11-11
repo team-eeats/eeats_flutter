@@ -23,7 +23,8 @@ class _RootScreenState extends State<RootScreen>
   @override
   void initState() {
     super.initState();
-    _controller = TabController(length: NavigatorType.values.length, vsync: this);
+    _controller =
+        TabController(length: NavigatorType.values.length, vsync: this);
     _controller.animation!.addListener(() {
       int index = _controller.index + _controller.offset.round();
 

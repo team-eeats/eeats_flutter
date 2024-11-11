@@ -1,3 +1,4 @@
+import 'package:eeats/domain/entity/notice/notice_entity.dart';
 import 'package:eeats/presentation/alarm/view/alarm_screen.dart';
 import 'package:eeats/presentation/my/view/alarm/my_alarm_screen.dart';
 import 'package:eeats/presentation/my/view/edit/my_edit_allergy_screen.dart';
@@ -58,7 +59,7 @@ final eeatsRouter = GoRouter(
     GoRoute(
       path: "/noticeDetail",
       builder: (context, state) {
-        return const MyNoticeDetailScreen();
+        return MyNoticeDetailScreen(item: state.extra as NoticeEntity);
       },
     ),
     GoRoute(

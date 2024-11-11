@@ -1,15 +1,19 @@
 import 'package:eeats/core/component/eeats_app_bar.dart';
+import 'package:eeats/core/component/eeats_text_field.dart';
 import 'package:eeats/core/di/eeats_style.dart';
 import 'package:eeats/core/layout/eeats_layout.dart';
 import 'package:eeats/core/type/app_bar_type.dart';
 import 'package:eeats/presentation/my/widget/suggest/my_suggest_item_widget.dart';
+import 'package:eeats/presentation/suggest/bloc/my_suggest/my_suggest_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MySuggestScreen extends StatelessWidget {
   const MySuggestScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final mySuggestLength = context.watch<MySuggestBloc>().state.value.suggestions!.length;
     return EeatsLayout(
       appBar: const EeatsAppBar(type: AppBarType.pop),
       child: SingleChildScrollView(
@@ -28,10 +32,10 @@ class MySuggestScreen extends StatelessWidget {
               ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: 100,
+                itemCount: mySuggestLength,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: EdgeInsets.only(bottom: index == 100 - 1 ? 0 : 12),
+                    padding: EdgeInsets.only(bottom: index == mySuggestLength - 1 ? 0 : 12),
                     child: const MySuggestItemWidget(),
                   );
                 },

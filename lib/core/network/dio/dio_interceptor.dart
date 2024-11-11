@@ -6,9 +6,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart'
     show FlutterSecureStorage;
 
 class DioInterceptor extends Interceptor {
-  final FlutterSecureStorage storage;
-
-  DioInterceptor({required this.storage});
+  final FlutterSecureStorage storage = const FlutterSecureStorage();
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
@@ -24,7 +22,7 @@ class DioInterceptor extends Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
-    debugPrint('[ERR] [${err.requestOptions.method}] ${err.requestOptions.uri}');
+    debugPrint('[ERR] [${err.requestOptions.method}] ${err.requestOptions.uri} ${err.response!.statusCode}');
 
     final refreshToken = await storage.read(key: refreshTokenKey);
 
@@ -41,17 +39,18 @@ class DioInterceptor extends Interceptor {
             options: Options(headers: {
               "Refresh-Token": refreshToken,
             }));
-        final accessToken = response.data['accessToken'];
+        final newAccessToken = response.data['accessToken'];
+        final newRefreshToken = response.data['refreshToken'];
 
         final options = err.requestOptions;
 
         options.headers.addAll({
-          'Authorization': accessToken,
+          'Authorization': newAccessToken,
         });
 
-        TokenSecureStorage.writeAccessToken(accessToken);
+        TokenSecureStorage.writeAccessToken(newAccessToken);
+        TokenSecureStorage.writeRefreshToken(newRefreshToken);
 
-        // 요청 재전송
         final resend = await network.dio.fetch(options);
 
         return handler.resolve(resend);

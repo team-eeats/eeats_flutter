@@ -2,7 +2,8 @@ import 'package:eeats/data/dto/response/suggest/comment_response.dart';
 import 'package:eeats/domain/entity/suggest/suggest_entity.dart';
 
 class SuggestResponse {
-  final String id, userId, title, content, createdAt, accountId;
+  final String id, title, content, createdAt, accountId;
+  final String? userId;
   final CommentResponse? comment;
 
   SuggestResponse({

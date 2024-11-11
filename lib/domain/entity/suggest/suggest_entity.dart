@@ -1,7 +1,8 @@
 import 'package:eeats/domain/entity/suggest/comment_entity.dart';
 
 class SuggestEntity {
-  final String id, userId, title, content, createdAt, accountId;
+  final String id, title, content, createdAt, accountId;
+  final String? userId;
   final CommentEntity? comment;
 
   SuggestEntity({

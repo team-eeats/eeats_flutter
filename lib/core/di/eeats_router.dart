@@ -77,7 +77,11 @@ final eeatsRouter = GoRouter(
     GoRoute(
       path: "/editSuggest",
       builder: (context, state) {
-        return const MySuggestEditScreen();
+        return MySuggestEditScreen(
+          title: (state.extra as Map<String, dynamic>)["title"],
+          content: (state.extra as Map<String, dynamic>)["content"],
+          uuid: (state.extra as Map<String, dynamic>)["uuid"],
+        );
       },
     ),
     GoRoute(

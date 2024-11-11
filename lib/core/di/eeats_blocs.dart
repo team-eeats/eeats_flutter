@@ -17,6 +17,7 @@ import 'package:eeats/domain/use_case/auth/sign_in_use_case.dart';
 import 'package:eeats/domain/use_case/meal/get_meal_use_case.dart';
 import 'package:eeats/domain/use_case/notice/get_notice_detail_use_case.dart';
 import 'package:eeats/domain/use_case/notice/get_notice_list_use_case.dart';
+import 'package:eeats/domain/use_case/suggest/edit_suggest_use_case.dart';
 import 'package:eeats/domain/use_case/suggest/get_my_suggest_use_case.dart';
 import 'package:eeats/domain/use_case/suggest/get_suggest_list_use_case.dart';
 import 'package:eeats/domain/use_case/suggest/post_suggest_use_case.dart';
@@ -57,6 +58,8 @@ Future<List<BlocProvider>> blocs() async {
       PostSuggestUseCase(suggestRepository: suggestRepository);
   GetMySuggestUseCase getMySuggestUseCase =
       GetMySuggestUseCase(suggestRepository: suggestRepository);
+  EditSuggestUseCase editSuggestUseCase =
+      EditSuggestUseCase(suggestRepository: suggestRepository);
 
   GetNoticeListUseCase getNoticeListUseCase =
       GetNoticeListUseCase(noticeRepository: noticeRepository);
@@ -93,6 +96,7 @@ Future<List<BlocProvider>> blocs() async {
     BlocProvider<MySuggestBloc>(
       create: (context) => MySuggestBloc(
         getMySuggestUseCase: getMySuggestUseCase,
+        editSuggestUseCase: editSuggestUseCase,
       ),
     ),
   ];

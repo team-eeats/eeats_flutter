@@ -1,6 +1,10 @@
 import 'package:eeats/core/component/eeats_gesture.dart';
+import 'package:eeats/core/component/eeats_text_field.dart';
 import 'package:eeats/core/di/eeats_style.dart';
+import 'package:eeats/presentation/suggest/bloc/my_suggest/my_suggest_bloc.dart';
+import 'package:eeats/presentation/suggest/bloc/my_suggest/my_suggest_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class MySuggestDialog extends StatelessWidget {
@@ -33,7 +37,7 @@ class MySuggestDialog extends StatelessWidget {
                   extra: {
                     "title": title,
                     "content": content,
-                    "uuid" : uuid,
+                    "uuid": uuid,
                   },
                 );
               },
@@ -55,15 +59,23 @@ class MySuggestDialog extends StatelessWidget {
               height: 1,
               color: EeatsColor.gray50,
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Text(
-                  "삭제하기",
-                  textAlign: TextAlign.center,
-                  style: EeatsTextStyle.button2(
-                    color: EeatsColor.main500,
+            EeatsGesture(
+              event: () {
+                context.pop();
+                context
+                  .read<MySuggestBloc>()
+                  .add(DeleteMySuggestEvent(uuid: uuid));
+              },
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Text(
+                    "삭제하기",
+                    textAlign: TextAlign.center,
+                    style: EeatsTextStyle.button2(
+                      color: EeatsColor.main500,
+                    ),
                   ),
                 ),
               ),

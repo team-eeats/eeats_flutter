@@ -11,3 +11,11 @@ class EditMySuggestEvent extends MySuggestEvent {
     required this.uuid,
   });
 }
+
+class DeleteMySuggestEvent extends MySuggestEvent {
+  final String uuid;
+
+  DeleteMySuggestEvent({
+    required this.uuid,
+  });
+}

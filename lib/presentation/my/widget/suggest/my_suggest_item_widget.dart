@@ -60,21 +60,22 @@ class MySuggestItemWidget extends StatelessWidget {
                         ),
                       ],
                     ),
-                    EeatsGesture(
-                      event: () => showDialog(
-                        barrierDismissible: true,
-                        context: context,
-                        builder: (context) {
-                          return MySuggestDialog(
-                            title: mySuggestItem.title,
-                            content: mySuggestItem.content,
-                            uuid: mySuggestItem.id,
-                          );
-                        },
+                    if (mySuggestItem.comment == null)
+                      EeatsGesture(
+                        event: () => showDialog(
+                          barrierDismissible: true,
+                          context: context,
+                          builder: (context) {
+                            return MySuggestDialog(
+                              title: mySuggestItem.title,
+                              content: mySuggestItem.content,
+                              uuid: mySuggestItem.id,
+                            );
+                          },
+                        ),
+                        child: SvgPicture.asset(
+                            "$iconMyAsset/dots_vertical_icon.svg"),
                       ),
-                      child: SvgPicture.asset(
-                          "$iconMyAsset/dots_vertical_icon.svg"),
-                    ),
                   ],
                 ),
                 const SizedBox(height: 12),

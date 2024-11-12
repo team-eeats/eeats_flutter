@@ -5,8 +5,8 @@ import 'package:eeats/presentation/home/bloc/home_bloc.dart';
 import 'package:eeats/presentation/home/bloc/home_event.dart';
 import 'package:eeats/presentation/my/bloc/notice/notice_bloc.dart';
 import 'package:eeats/presentation/my/bloc/notice/notice_event.dart';
-import 'package:eeats/presentation/sign_in/bloc/sign_in_bloc.dart';
-import 'package:eeats/presentation/sign_in/bloc/sign_in_state.dart';
+import 'package:eeats/presentation/my/bloc/user/my_bloc.dart';
+import 'package:eeats/presentation/my/bloc/user/my_event.dart';
 import 'package:eeats/presentation/splash/bloc/splash_bloc.dart';
 import 'package:eeats/presentation/splash/bloc/splash_event.dart';
 import 'package:eeats/presentation/splash/bloc/splash_state.dart';
@@ -55,6 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
             context.read<NoticeBloc>().add(GetNoticeEvent());
             context.read<HomeBloc>().add(GetMealEvent(
                 date: DateFormat("yyyyMMdd").format(DateTime.now())));
+            context.read<MyBloc>().add(GetMyEvent());
             context.go("/root");
           },
         ),

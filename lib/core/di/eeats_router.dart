@@ -47,7 +47,7 @@ final eeatsRouter = GoRouter(
     GoRoute(
       path: "/nickname",
       builder: (context, state) {
-        return const MyEditNicknameScreen();
+        return MyEditNicknameScreen(nickname: state.extra as String);
       },
     ),
     GoRoute(

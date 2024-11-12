@@ -7,6 +7,8 @@ import 'package:eeats/core/provider/text_field_empty_cubit.dart';
 import 'package:eeats/core/provider/text_field_focus_cubit.dart';
 import 'package:eeats/core/type/app_bar_type.dart';
 import 'package:eeats/domain/entity/suggest/suggest_list_entity.dart';
+import 'package:eeats/presentation/suggest/bloc/my_suggest/my_suggest_bloc.dart';
+import 'package:eeats/presentation/suggest/bloc/my_suggest/my_suggest_event.dart';
 import 'package:eeats/presentation/suggest/bloc/suggest/suggest_bloc.dart';
 import 'package:eeats/presentation/suggest/bloc/suggest/suggest_event.dart';
 import 'package:eeats/presentation/suggest/bloc/suggest/suggest_state.dart';
@@ -65,6 +67,7 @@ class _SuggestAddScreenState extends State<SuggestAddScreen> {
       listener: (context, state) {
         if (state.state == SuggestRemoteState.success) {
           context.pop();
+          context.read<MySuggestBloc>().add(GetMySuggestEvent());
         }
       },
       child: EeatsLayout(

@@ -1,16 +1,26 @@
 import 'package:eeats/core/component/eeats_app_bar.dart';
 import 'package:eeats/core/component/eeats_outlined_button.dart';
+import 'package:eeats/core/component/eeats_text_field.dart';
 import 'package:eeats/core/di/eeats_style.dart';
 import 'package:eeats/core/dummy/allergy_list.dart';
 import 'package:eeats/core/layout/eeats_layout.dart';
 import 'package:eeats/core/type/app_bar_type.dart';
+import 'package:eeats/presentation/my/cubit/select_allergy_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MyEditAllergyScreen extends StatelessWidget {
+class MyEditAllergyScreen extends StatefulWidget {
   const MyEditAllergyScreen({super.key});
 
   @override
+  State<MyEditAllergyScreen> createState() => _MyEditAllergyScreenState();
+}
+
+class _MyEditAllergyScreenState extends State<MyEditAllergyScreen> {
+
+  @override
   Widget build(BuildContext context) {
+    final allergyList = context.watch<SelectAllergyCubit>().state;
     return EeatsLayout(
       appBar: const EeatsAppBar(type: AppBarType.pop),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -54,7 +64,7 @@ class MyEditAllergyScreen extends StatelessWidget {
                 runSpacing: 14,
                 // 상하 간격
                 children: [
-                  for (int i = 0; i < allergyList.length; i++)
+                  for (int i = 0; i < allergyData.length; i++)
                     FittedBox(
                       child: Container(
                         decoration: BoxDecoration(
@@ -65,7 +75,7 @@ class MyEditAllergyScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 8),
                           child: Text(
-                            allergyList.elementAt(i),
+                            allergyData.values.elementAt(i),
                             style: EeatsTextStyle.label2(
                               color: EeatsColor.white,
                             ),
